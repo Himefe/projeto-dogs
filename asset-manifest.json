@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/himefe.github.io/projeto-dogs/static/css/main.ca1b9b9d.css",
-    "main.js": "/himefe.github.io/projeto-dogs/static/js/main.1fde8c87.js",
-    "static/media/login.jpg": "/himefe.github.io/projeto-dogs/static/media/login.07d71f5b9d5714e556b0.jpg",
-    "index.html": "/himefe.github.io/projeto-dogs/index.html",
-    "static/media/usuario.svg": "/himefe.github.io/projeto-dogs/static/media/usuario.6d65a298e2fba2e83683.svg",
-    "static/media/dogs.svg": "/himefe.github.io/projeto-dogs/static/media/dogs.69bf6d229e8cb46f9023318d0802ee8f.svg",
-    "main.ca1b9b9d.css.map": "/himefe.github.io/projeto-dogs/static/css/main.ca1b9b9d.css.map",
-    "main.1fde8c87.js.map": "/himefe.github.io/projeto-dogs/static/js/main.1fde8c87.js.map"
+    "main.css": "/projeto-dogs/static/css/main.d03bc4a4.css",
+    "main.js": "/projeto-dogs/static/js/main.3434b3a4.js",
+    "static/media/login.jpg": "/projeto-dogs/static/media/login.07d71f5b9d5714e556b0.jpg",
+    "index.html": "/projeto-dogs/index.html",
+    "static/media/usuario.svg": "/projeto-dogs/static/media/usuario.6d65a298e2fba2e83683.svg",
+    "static/media/dogs.svg": "/projeto-dogs/static/media/dogs.69bf6d229e8cb46f9023318d0802ee8f.svg",
+    "main.d03bc4a4.css.map": "/projeto-dogs/static/css/main.d03bc4a4.css.map",
+    "main.3434b3a4.js.map": "/projeto-dogs/static/js/main.3434b3a4.js.map"
   },
   "entrypoints": [
-    "static/css/main.ca1b9b9d.css",
-    "static/js/main.1fde8c87.js"
+    "static/css/main.d03bc4a4.css",
+    "static/js/main.3434b3a4.js"
   ]
 }
