@@ -69,6 +69,19 @@ input {
   color: #764701;
 }
 
+.animeLeft {
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: animeLeft 0.6s forwards;
+}
+
 .footer p {
   margin-top: 20px;
+}
+
+@keyframes animeLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
 }
