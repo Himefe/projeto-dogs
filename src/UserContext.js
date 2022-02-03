@@ -59,7 +59,11 @@ export const UserStorage = ({ children }) => {
     const { url, options } = TOKEN_POST({ username, password });
 
     const { json, response } = await request(url, options);
-    if (response.ok) window.localStorage.setItem("token", json.token);
+    if (response.ok) {
+      window.localStorage.setItem("token", json.token);
+    } else {
+      setError(json.data.message);
+    }
     await getUser(json.token);
   }
 
