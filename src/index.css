@@ -12,11 +12,41 @@ html {
   color: #333;
   --type-first: Helvetica, Arial, sans-serif;
   --type-second: "Spectral", Georgia;
+  --font-desk: 3rem;
+  --font-mobile: 2rem;
   font-family: var(--type-first);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+body {
+  display: grid;
+}
+
+#root {
+  flex: 1;
+}
+
+body > * {
+  color: #333;
 }
 
 body {
   padding-top: 4rem;
+}
+
+#root,
+.App {
+  height: 100%;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
 }
 
 ul,
@@ -53,9 +83,10 @@ input {
 }
 
 .container {
-  width: 80%;
+  max-width: 800px;
   padding: 0 1rem;
   margin: 0 auto;
+  min-height: 100%;
 }
 
 .footer {
@@ -64,9 +95,19 @@ input {
   align-items: center;
   flex-direction: column;
   background: #fb1;
-  height: 10rem;
+  min-height: 10rem;
   text-align: center;
   color: #764701;
+}
+
+.footer .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.mainContainer {
+  margin: 2rem auto;
 }
 
 .animeLeft {
@@ -79,9 +120,46 @@ input {
   margin-top: 20px;
 }
 
+.title {
+  margin: 1rem 0;
+  line-height: 1;
+  z-index: 1;
+  font-size: 3rem;
+  position: relative;
+  font-family: var(--type-second);
+  color: #333;
+}
+
+.title > * {
+  color: #333;
+}
+
+.title::after {
+  content: "";
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  bottom: 5px;
+  left: -5px;
+  background-color: #fb1;
+  border-radius: 3px;
+  z-index: -1;
+}
+
 @keyframes animeLeft {
   to {
     opacity: 1;
     transform: translateX(0px);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    width: 95%;
+  }
+
+  .mainContainer {
+    margin: 2rem 0;
   }
 }
