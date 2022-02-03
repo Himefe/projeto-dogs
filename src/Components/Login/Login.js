@@ -14,7 +14,7 @@ const Login = () => {
     return <Navigate to="/conta/minha-conta" />;
   }
   return (
-    <section className={`${styles.login} container mainContainer`}>
+    <section className={`styles.login`}>
       <Routes>
         <Route path="/" element={<LoginForm />} />
         <Route path="cadastro" element={<CreateLoginForm />} />
