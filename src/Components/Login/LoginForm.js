@@ -4,6 +4,7 @@ import Button from "../Form/Button";
 import Input from "../Form/Input";
 import styles from "./LoginForms.module.css";
 import stylesButton from "../Form/Button.module.css";
+import Error from "../Helper/Error";
 
 import { Link } from "react-router-dom";
 import { UserContext } from "../../UserContext";
@@ -53,7 +54,7 @@ const LoginForm = () => {
           <Button nome="Entrar" />
         )}
 
-        {error ? error : ""}
+        {error ? <Error error={error} /> : null}
       </form>
 
       <a href="Login/perdeu" className={styles.lostPassword}>
