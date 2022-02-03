@@ -1,0 +1,29 @@
+.modal {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  cursor: pointer;
+}
+
+.modal > div > div > div {
+  max-height: 36rem;
+  height: inherit;
+}
+
+.modal ul li div img {
+  max-height: inherit;
+}
+
+@media screen and (max-width: 767px) {
+  .modal {
+    place-items: center;
+  }
+}

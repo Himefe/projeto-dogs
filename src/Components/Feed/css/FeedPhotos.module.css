@@ -1,0 +1,71 @@
+.ulArea {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  grid-gap: 20px;
+  margin: 20px 0;
+  /* flex: 1; */
+  min-height: 100%;
+  height: 100%;
+}
+
+.ulArea li {
+  display: grid;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  grid-template-rows: auto;
+}
+
+.ulArea li img {
+  border-radius: inherit;
+  grid-area: 1/1;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.ulArea li:nth-of-type(2) {
+  grid-column: 2/4;
+  grid-row: span 2;
+  grid-template-rows: auto;
+}
+
+.ulArea span {
+  grid-area: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.ulArea span::before {
+  display: flex;
+  align-items: center;
+  content: url("../../../Assets/visualizacao.svg");
+  width: 16px;
+  height: 10px;
+  margin-right: 0.25rem;
+}
+
+.ulArea li:hover span {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  opacity: 1;
+}
+
+@media screen and (max-width: 767px) {
+  .ulArea {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ulArea li {
+    grid-template-rows: auto;
+  }
+
+  .ulArea li:nth-of-type(2) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}

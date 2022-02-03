@@ -1,0 +1,151 @@
+.modalPhoto {
+  height: 100%;
+  grid-template-columns: 36rem 20rem;
+  grid-template-rows: auto 1fr auto;
+  display: grid;
+  background: white;
+  border-radius: 0.2rem;
+  transform: scale(0.8);
+  animation: fadeIn 0.2s forwards linear;
+  transition: all 0.3s ease-in;
+  cursor: default;
+  height: 36rem;
+  margin: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-width: 40%;
+}
+
+.single.modalPhoto {
+  grid-template-columns: 1fr;
+  height: auto;
+}
+
+.imgContent {
+  grid-row: 1/4;
+  height: 100%;
+}
+
+.single .imgContent {
+  grid-row: 1;
+  border-radius: 0.4rem;
+  overflow: hidden;
+}
+
+.imgContent img {
+  width: 100%;
+  height: 100%;
+  grid-area: 1/1;
+  border-top-left-radius: 0.2rem;
+  border-bottom-left-radius: 0.2rem;
+}
+
+.container {
+  padding: 20px;
+}
+
+.author {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0.5;
+}
+
+.author span {
+  color: #333;
+  display: flex;
+  align-items: flex-end;
+  height: 20px;
+}
+
+.author span::before {
+  content: "";
+  display: flex;
+  width: 20px;
+  height: 20px;
+  align-items: center;
+  background: url("../../../../Assets/visualizacao-black.svg") no-repeat;
+  background-position: center center;
+  margin-right: 5px;
+}
+
+.author > a {
+  color: #333;
+}
+
+.author a:hover {
+  text-decoration: #333;
+}
+
+.atributos {
+  display: flex;
+  align-items: center;
+}
+
+.atributos span {
+  border-left: 2px solid #333;
+  font-weight: 700;
+  color: #333;
+  padding: 0 5px;
+  margin-right: 2rem;
+  font-size: 1.125rem;
+}
+
+.container h1 {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.contentComment {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-row: 1/4;
+}
+
+.single .contentComment {
+  grid-row: 2;
+}
+
+@keyframes fadeIn {
+  to {
+    transform: scale(1);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .modalPhoto {
+    justify-self: center;
+    grid-template-columns: 1fr;
+    height: 90%;
+    width: 90vw;
+    justify-content: center;
+  }
+
+  .imgContent {
+    grid-row: 1;
+  }
+
+  .imgContent img {
+    grid-area: 1/1;
+    border-top-left-radius: 0.2rem;
+    border-top-right-radius: 0.2rem;
+    border-bottom-left-radius: 0px;
+  }
+
+  .contentComment {
+    grid-row: auto;
+  }
+
+  .container {
+    padding: 10px 20px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .modalPhoto {
+    grid-template-columns: 60% 40%;
+    margin: 0 20px;
+    height: auto;
+  }
+}

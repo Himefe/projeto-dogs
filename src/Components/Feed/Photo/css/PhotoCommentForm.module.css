@@ -1,0 +1,68 @@
+.textArea {
+  resize: none;
+  display: block;
+  width: 100%;
+  font-size: 1rem;
+  font-family: var(--type-first);
+  resize: none;
+  border: 1px solid #eee;
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  background: #eee;
+  transition: 0.2s;
+  outline: none;
+}
+
+.textArea:focus,
+.textArea:hover {
+  border-color: #fb1;
+  background: #fff;
+  box-shadow: 0 0 0 3px #fea;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: stretch;
+  margin: 1rem;
+}
+
+.send {
+  border: none;
+  cursor: pointer;
+  color: #333;
+  background: transparent;
+  font-size: 1rem;
+  padding: 0 1rem;
+  overflow: hidden;
+}
+
+.send:hover svg path,
+.send:focus svg path {
+  fill: #fea;
+  stroke: #fb1;
+}
+
+.send:hover svg g,
+.send:focus svg g {
+  animation: latir 0.6s infinite ease-in-out;
+}
+
+.single.form {
+  margin: 1rem 0;
+}
+
+@media screen and (max-width: 767px) {
+  .form {
+    margin: 0.5rem 1rem;
+  }
+}
+
+@keyframes latir {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

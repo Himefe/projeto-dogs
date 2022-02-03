@@ -1,0 +1,154 @@
+.userArea {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  position: relative;
+}
+
+.navArea {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  align-items: center;
+}
+
+.navArea a,
+.navArea button {
+  background: #eee;
+  border-radius: 0.2rem;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  transition: 0.1s;
+  cursor: pointer;
+  min-width: 40px;
+}
+
+.navArea a:hover,
+.navArea button:hover {
+  border: 1px solid #000;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.navArea a:global(.active),
+.navArea button:global(.active) {
+  background-color: white;
+}
+
+.navArea a:global(.active) {
+  border: 1px solid #fb1;
+  box-shadow: 0 0 0 3px #fea;
+}
+
+.navArea a:global(.active) svg > * {
+  fill: #fb1;
+}
+
+.menuMobile {
+  background: #eee;
+  border-radius: 0.2rem;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  padding: 0px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  transition: 0.1s;
+  cursor: pointer;
+}
+
+.menuMobile::after {
+  content: "";
+  display: block;
+  color: currentColor;
+  width: 1.2rem;
+  height: 2px;
+  background-color: currentColor;
+  box-shadow: 0 6px 0 currentColor, 0 -6px 0 currentColor;
+  border-radius: 5px;
+  transform: translateX(0deg);
+  transition: transform 0.1s linear;
+}
+
+.menuMobile:focus,
+.menuMobile:hover,
+.menuMobileActive {
+  outline: none;
+  color: #fb1;
+  background-color: white;
+  box-shadow: 0 0 0 3px currentColor;
+  border-color: #fb1;
+}
+
+.menuMobileActive::after {
+  transform: rotate(-90deg);
+  width: 4px;
+  height: 4px;
+  box-shadow: 0 8px currentColor, 0 -8px currentColor;
+  transition: transform 0.1s linear;
+}
+
+.navAreaMobile {
+  opacity: 0;
+  position: absolute;
+  top: 35px;
+  right: 0;
+  background-color: white;
+  display: block;
+  padding: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  transition: all 0.4s linear;
+  transform: translateX(300px);
+  overflow: hidden;
+}
+
+.navAreaMobile a,
+.navAreaMobile button {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border: none;
+  padding: 0.5rem 0;
+  font-size: 1rem;
+  color: black;
+  width: 100%;
+  border-bottom: 1px solid #dedada;
+}
+
+.navAreaMobile a:first-child {
+  padding-top: 0;
+}
+
+.navAreaMobile button {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.navAreaMobile a > svg,
+.navAreaMobile button > svg {
+  margin-right: 5px;
+}
+
+.navAreaMobile a:hover,
+.navAreaMobile button:hover {
+  margin-right: 5px;
+  background-color: white;
+}
+
+.navAreaMobile a:hover > svg > *,
+.navAreaMobile button:hover > svg > * {
+  fill: #fb1;
+}
+
+.navMobileActive {
+  opacity: 1;
+  transform: translateX(0px);
+  transition: transform 0.4s linear;
+}

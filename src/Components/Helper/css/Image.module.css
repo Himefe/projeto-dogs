@@ -1,0 +1,31 @@
+.wrapper {
+  grid-area: 1/1;
+  display: grid;
+}
+
+.img {
+  opacity: 0;
+  transition: 0.2s;
+  grid-area: 1/1;
+  max-height: inherit;
+  object-fit: cover;
+}
+
+.skeleton {
+  grid-area: 1/1;
+  height: inherit;
+  background: linear-gradient(90deg, #eee 0px, #fff 50%, #eee 100%);
+  background-size: 200%;
+  animation: skeletion 0.5s infinite linear;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+@keyframes skeletion {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -200%;
+  }
+}

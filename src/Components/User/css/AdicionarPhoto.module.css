@@ -1,0 +1,80 @@
+.addArea {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 40px 0;
+}
+
+.inputFile {
+  background-color: white;
+}
+
+.fileArea {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.fileArea > div {
+  flex: 1;
+  border: 1px solid #fb1;
+  padding: 15px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.fileArea input {
+  display: none;
+}
+
+.labelFile {
+  background-color: white;
+  cursor: pointer;
+  background-color: #fb1;
+  padding: 15px;
+  border-radius: 5px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  color: #764701;
+  border: 1px solid #fb1;
+}
+
+.preview {
+  background-size: cover;
+  border-radius: 1rem;
+  background-position: center center;
+  height: 100%;
+}
+
+.preview::after {
+  content: "";
+  display: block;
+  height: 0px;
+  padding-bottom: 100%;
+}
+
+@media screen and (max-width: 767px) {
+  .form {
+    width: 100%;
+  }
+
+  .labelFile {
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    height: 50px;
+  }
+
+  .labelFile svg {
+    width: 50% !important;
+  }
+
+  .addArea {
+    grid-template-columns: 100%;
+  }
+}

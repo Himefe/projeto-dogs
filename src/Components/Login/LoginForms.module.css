@@ -1,0 +1,89 @@
+.loginForm {
+  max-width: 30rem;
+  padding: 1rem;
+  margin-top: 20vh;
+}
+
+.title {
+  margin: 1rem 0;
+  line-height: 1;
+  z-index: 1;
+  font-size: 3rem;
+  position: relative;
+  font-family: var(--type-second);
+}
+
+.title::after {
+  content: "";
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  bottom: 5px;
+  left: -5px;
+  background-color: #fb1;
+  border-radius: 3px;
+  z-index: -1;
+}
+
+.form {
+  margin-bottom: 30px;
+}
+
+.lostPassword {
+  display: inline-block;
+  color: #666;
+  padding: 0.5rem 0;
+  line-height: 1;
+}
+
+.lostPassword::after {
+  display: block;
+  content: "";
+  width: 100%;
+  height: 2px;
+  background-color: #666;
+}
+
+.cadastro {
+  margin: 40px 0;
+}
+
+.cadastro h2 {
+  font-family: var(--type-second);
+  line-height: 1;
+  font-size: 2rem;
+}
+
+.cadastro h2::after {
+  content: "";
+  display: block;
+  background: #ddd;
+  height: 0.5rem;
+  width: 3rem;
+  border-radius: 0.2rem;
+}
+
+.cadastro p {
+  margin: 2rem 0;
+}
+
+.error {
+  margin: 2rem 0;
+  color: red;
+}
+
+@media screen and (max-width: 767px) {
+  .title {
+    font-size: var(--font-mobile);
+  }
+
+  .title::after {
+    top: 10px;
+    left: -8px;
+  }
+
+  .loginForm {
+    margin-top: 0;
+  }
+}

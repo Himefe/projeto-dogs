@@ -1,0 +1,28 @@
+.comentarios {
+  display: flex;
+  margin: 10px 0;
+}
+
+.container {
+  padding: 20px;
+}
+
+.comentarios p {
+  margin-left: 5px;
+  word-break: break-word;
+}
+
+.single.comments {
+  padding: 0px;
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    padding: 10px 20px;
+  }
+
+  .comentariosArea {
+    max-height: 74px;
+    overflow-y: auto;
+  }
+}
