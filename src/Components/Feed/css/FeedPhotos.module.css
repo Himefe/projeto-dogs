@@ -58,6 +58,7 @@
 @media screen and (max-width: 767px) {
   .ulArea {
     grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 80px;
   }
 
   .ulArea li {
