@@ -10,15 +10,15 @@ import Error from "../Helper/Error";
 
 const LostForm = () => {
   const { data, setData, request, error, loading } = useFetch();
-  const email = useForm("email");
+  const email_usuario = useForm();
 
   async function handleSubmit(event) {
     event.preventDefault();
-    email.validate();
-    if (email.validate()) {
+    email_usuario.validate();
+    if (email_usuario.validate()) {
       const { url, options } = USER_LOST_PASSWORD({
-        login: email.value,
-        url: "http://localhost:3000/Login/reset",
+        login: email_usuario.value,
+        url: `${window.location.origin}/Login/reset`,
       });
       const { json } = await request(url, options);
       setData(json);
@@ -41,7 +41,7 @@ const LostForm = () => {
               label="Email / Usuário"
               type="text"
               name="login"
-              {...email}
+              {...email_usuario}
             />
             {loading ? (
               <Button nome="Enviando..." disabled />
