@@ -17,7 +17,7 @@ function App() {
       <BrowserRouter>
         <UserStorage>
           <Header />
-          <main>
+          <main className="mainBody">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="login/*" element={<Login />} />

@@ -158,4 +158,8 @@ input {
   .container {
     width: 95%;
   }
+
+  .mainBody {
+    margin-bottom: 80px;
+  }
 }
