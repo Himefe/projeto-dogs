@@ -24,11 +24,11 @@ const Feed = ({ userID }) => {
       }
     };
 
-    // window.addEventListener("wheel", infinitePage);
+    window.addEventListener("wheel", infinitePage);
     window.addEventListener("scroll", infinitePage);
 
     return () => {
-      // window.removeEventListener("wheel", infinitePage);
+      window.removeEventListener("wheel", infinitePage);
       window.removeEventListener("scroll", infinitePage);
     };
   }, [infinite]);
