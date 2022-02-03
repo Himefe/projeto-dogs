@@ -4,6 +4,7 @@ import useFetch from "../../Hooks/useFetch";
 import useForm from "../../Hooks/useForm";
 import Button from "../Form/Button";
 import Input from "../Form/Input";
+import Error from "../Helper/Error";
 import styles from "./LoginForms.module.css";
 
 const ResetForm = () => {
@@ -37,7 +38,7 @@ const ResetForm = () => {
   }
 
   if (error) {
-    return <p>{error}</p>;
+    return <Error error={error} />;
   }
 
   return (
@@ -45,7 +46,12 @@ const ResetForm = () => {
       <form className={`${styles.loginForm} animeLeft`} onSubmit={handleSubmit}>
         <h2 className="title">Reset de senha</h2>
         <Input label="Senha" type="password" {...password} />
-        <Button nome="Resetar" />
+        {loading ? (
+          <Button nome="Resetando..." disabled />
+        ) : (
+          <Button nome="Resetar" />
+        )}
+
         {data ? <p className={styles.sucess}>{data}</p> : null}
       </form>
     </>

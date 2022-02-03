@@ -3,6 +3,7 @@ import { PHOTO_COMMENT_POST } from "../../../api";
 import useFetch from "../../../Hooks/useFetch";
 import styles from "./css/PhotoCommentForm.module.css";
 import { ReactComponent as Enviar } from "../../../Assets/enviar.svg";
+import Error from "../../Helper/Error";
 
 const PhotoComment = ({ id, setComments, single }) => {
   const { request, error } = useFetch();
@@ -36,7 +37,7 @@ const PhotoComment = ({ id, setComments, single }) => {
       <button className={styles.send}>
         <Enviar />
       </button>
-      {error ? <p>{error}</p> : null}
+      {error ? <Error error={error} /> : null}
     </form>
   );
 };

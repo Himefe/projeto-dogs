@@ -4,6 +4,7 @@ import useFetch from "../../Hooks/useFetch";
 import { PHOTO_GET } from "../../api";
 import PhotoContent from "./Photo/PhotoContent";
 import Loading from "../Helper/Loading";
+import Error from "../Helper/Error";
 
 const FeedModal = ({ photo, setModalPhoto }) => {
   const { data, loading, error, request } = useFetch();
@@ -24,7 +25,7 @@ const FeedModal = ({ photo, setModalPhoto }) => {
 
   return (
     <div className={styles.modal} onClick={fechaModal}>
-      {error ? <p>{error}</p> : null}
+      {error ? <Error error={error} /> : null}
       {loading ? <Loading /> : null}
       {data ? <PhotoContent data={data} /> : null}
     </div>

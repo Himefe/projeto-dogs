@@ -18,7 +18,7 @@ const LostForm = () => {
     if (email_usuario.validate()) {
       const { url, options } = USER_LOST_PASSWORD({
         login: email_usuario.value,
-        url: `${window.location.origin}/Login/reset`,
+        url: `https://projeto-dogs-himefe.vercel.app/Login/reset`,
       });
       const { json } = await request(url, options);
       setData(json);
