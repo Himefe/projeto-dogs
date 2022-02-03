@@ -11,6 +11,7 @@ import { ReactComponent as Upload } from "../../Assets/upload.svg";
 import { USER_PHOTO_POST } from "../../api";
 import { useNavigate } from "react-router-dom";
 import Head from "../Helper/Head";
+import Error from "../Helper/Error";
 
 const AdicionarFoto = () => {
   const nomeFoto = useForm("");
@@ -126,7 +127,7 @@ const AdicionarFoto = () => {
         ) : null}
       </div>
 
-      {error ? <p className="error">{error}</p> : null}
+      {error ? <Error error={error} /> : null}
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import React from "react";
+import Error from "../Helper/Error";
 import styles from "./Input.module.css";
 
 const Input = ({
@@ -27,7 +28,7 @@ const Input = ({
         onChange={onChange}
         onBlur={onBlur}
       />
-      {error ? <p className={styles.error}>{error}</p> : null}
+      {error ? <Error error={error} /> : null}
     </div>
   );
 };

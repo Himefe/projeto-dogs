@@ -25,7 +25,7 @@ const useFetch = () => {
         setLogin(true);
       }
     } catch (err) {
-      setError("ERRROOOOOOOOOOOOOO");
+      setError("Houve algum erro!");
       setData(null);
     } finally {
       setLoading(false);

@@ -6,6 +6,7 @@ import useForm from "../../Hooks/useForm";
 import { UserContext } from "../../UserContext";
 import Button from "../Form/Button";
 import Input from "../Form/Input";
+import Error from "../Helper/Error";
 import Head from "../Helper/Head";
 import styles from "./LoginForms.module.css";
 
@@ -80,7 +81,7 @@ const CreateLoginForm = () => {
             <Button nome="Cadastrar" />
           )}
 
-          {error ? <p className={styles.error}>{error}</p> : null}
+          {error ? <Error error={error} /> : null}
         </form>
       </div>
     </section>
