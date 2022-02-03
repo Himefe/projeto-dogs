@@ -49,19 +49,19 @@ const UserHeader = () => {
             mobile ? style.navMobileActive : ""
           }`}
         >
-          <NavLink to="minha-conta">
+          <NavLink to="minha-conta" title="Minha Conta">
             <Conta />
             {matched ? <p>Minhas Fotos</p> : null}
           </NavLink>
-          <NavLink to="estatisticas">
+          <NavLink to="estatisticas" title="Estatísticas">
             <Estatisticas />
             {matched ? <p>Estastísticas</p> : null}
           </NavLink>
-          <NavLink to="postar">
+          <NavLink to="postar" title="Postar uma foto">
             <Adicionar />
             {matched ? <p>Adicionar Fotos</p> : null}
           </NavLink>
-          <button onClick={userLogout}>
+          <button onClick={userLogout} title="Deslogar">
             <Logout />
             {matched ? <p>Sair</p> : null}
           </button>

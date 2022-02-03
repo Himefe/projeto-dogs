@@ -10,19 +10,18 @@ const useFetch = () => {
     let response;
     let json;
     try {
-      setError(null);
       setLoading(true);
       response = await fetch(url, options);
       json = await response.json();
 
-      if (!response.ok) {
-        setError("Erro ao fazer a requisição!");
-      } else if (typeof json === "string") {
-        setData(json);
-        setLogin(false);
-      } else {
-        setData(json);
-        setLogin(true);
+      if (response.ok) {
+        if (typeof json === "string") {
+          setData(json);
+          setLogin(false);
+        } else {
+          setData(json);
+          setLogin(true);
+        }
       }
     } catch (err) {
       setError("Houve algum erro!");

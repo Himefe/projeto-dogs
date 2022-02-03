@@ -62,7 +62,7 @@ export const UserStorage = ({ children }) => {
     if (response.ok) {
       window.localStorage.setItem("token", json.token);
     } else {
-      setError(json.data.message);
+      setError(json.message);
     }
     await getUser(json.token);
   }
