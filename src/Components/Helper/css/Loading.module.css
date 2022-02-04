@@ -2,6 +2,7 @@
   width: 100%;
   height: inherit;
   min-height: inherit;
+  display: flex;
 }
 
 .loading {
