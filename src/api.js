@@ -114,7 +114,7 @@ export const PHOTO_COMMENT_POST = (id, body) => {
 
 export const USER_LOGIN_RESET = (body) => {
   return {
-    url: `${API_URL}/api/password/lost`,
+    url: `${API_URL}/api/password/reset`,
     options: {
       method: "POST",
       headers: {

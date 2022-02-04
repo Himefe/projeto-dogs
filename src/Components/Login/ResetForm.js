@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { USER_LOGIN_RESET } from "../../api";
 import useFetch from "../../Hooks/useFetch";
 import useForm from "../../Hooks/useForm";
@@ -13,6 +14,7 @@ const ResetForm = () => {
 
   const [key, setKey] = React.useState(null);
   const [login, setLogin] = React.useState(null);
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -34,6 +36,9 @@ const ResetForm = () => {
       };
       const { url, options } = USER_LOGIN_RESET(obj);
       await request(url, options);
+      setTimeout(() => {
+        navigate("./Login");
+      }, 4000);
     }
   }
 
