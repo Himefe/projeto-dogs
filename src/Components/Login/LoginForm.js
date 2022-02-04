@@ -57,7 +57,7 @@ const LoginForm = () => {
         {error ? <Error error="Dados incorretos!" /> : null}
       </form>
 
-      <Link to="/perdeu" className={styles.lostPassword}>
+      <Link to="perdeu" className={styles.lostPassword}>
         Perdeu a Senha?
       </Link>
       <div className={styles.cadastro}>
