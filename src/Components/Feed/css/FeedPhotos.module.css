@@ -62,6 +62,7 @@
 
   .ulArea li {
     grid-template-rows: auto;
+    min-height: auto;
   }
 
   .ulArea li:nth-of-type(2) {
