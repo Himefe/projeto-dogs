@@ -47,19 +47,23 @@ const ResetForm = () => {
   }
 
   return (
-    <>
-      <form className={`${styles.loginForm} animeLeft`} onSubmit={handleSubmit}>
-        <h2 className="title">Reset de senha</h2>
-        <Input label="Senha" type="password" {...password} />
-        {loading ? (
-          <Button nome="Resetando..." disabled />
-        ) : (
-          <Button nome="Resetar" />
-        )}
+    <div className="animeLeft">
+      <h2 className="title">Reset de senha</h2>
+      {typeof data === "string" ? (
+        <p style={{ color: "#4c1" }}>{data}</p>
+      ) : (
+        <form className={styles.loginForm} onSubmit={handleSubmit}>
+          <Input label="Senha" type="password" {...password} />
+          {loading ? (
+            <Button nome="Resetando..." disabled />
+          ) : (
+            <Button nome="Resetar" />
+          )}
 
-        {data ? <p className={styles.sucess}>{data}</p> : null}
-      </form>
-    </>
+          {data ? <p className={styles.sucess}>{data}</p> : null}
+        </form>
+      )}
+    </div>
   );
 };
 
