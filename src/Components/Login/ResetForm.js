@@ -10,7 +10,7 @@ import styles from "./LoginForms.module.css";
 
 const ResetForm = () => {
   const password = useForm("");
-  const { loading, error, request, data } = useFetch();
+  const { loading, error, request, data, setError } = useFetch();
 
   const [key, setKey] = React.useState(null);
   const [login, setLogin] = React.useState(null);
@@ -35,24 +35,25 @@ const ResetForm = () => {
         password: password.value,
       };
       const { url, options } = USER_LOGIN_RESET(obj);
-      await request(url, options);
-      setTimeout(() => {
-        navigate("./Login");
-      }, 4000);
+      const { response, json } = await request(url, options);
+
+      if (response.ok) {
+        setTimeout(() => {
+          navigate("/Login");
+        }, 4000);
+      } else {
+        setError(json.message);
+      }
     }
   }
 
-  if (error) {
-    return <Error error={error} />;
-  }
-
   return (
-    <div className="animeLeft">
+    <div className={`${styles.loginForm} animeLeft`}>
       <h2 className="title">Reset de senha</h2>
-      {typeof data === "string" ? (
+      {data && typeof data === "string" ? (
         <p style={{ color: "#4c1" }}>{data}</p>
       ) : (
-        <form className={styles.loginForm} onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <Input label="Senha" type="password" {...password} />
           {loading ? (
             <Button nome="Resetando..." disabled />
@@ -60,7 +61,11 @@ const ResetForm = () => {
             <Button nome="Resetar" />
           )}
 
-          {data ? <p className={styles.sucess}>{data}</p> : null}
+          {error ? <Error error={error} /> : null}
+
+          {data && typeof data !== "string" ? (
+            <Error error={data?.message} />
+          ) : null}
         </form>
       )}
     </div>
