@@ -18,6 +18,8 @@ const AdicionarFoto = () => {
   const peso = useForm("");
   const idade = useForm("");
 
+  const [img, setImg] = React.useState({});
+
   const mobile = useMedia("(max-width: 767px)");
   const { request, error, data, loading } = useFetch();
 
@@ -25,9 +27,16 @@ const AdicionarFoto = () => {
     "Selecione um arquivo..."
   );
 
-  const navigate = useNavigate();
+  React.useEffect(() => {
+    if (nomeArquivo.length > 28 && mobile) {
+      const shortName = `${img?.raw.name.substr(0, 25)}...`;
+      setNomeArquivo(shortName);
+    }
+  }, [nomeArquivo, img, mobile]);
 
-  const [img, setImg] = React.useState({});
+  React.useEffect(() => {}, [nomeArquivo, img]);
+
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     if (data) {
@@ -110,7 +119,12 @@ const AdicionarFoto = () => {
           <label htmlFor="inputFile" className={styles.labelFile}>
             {!mobile ? "Carregar Arquivo" : <Upload />}
           </label>
-          <input type="file" id="inputFile" onChange={changeNameFile} />
+          <input
+            type="file"
+            name="inputFile"
+            id="inputFile"
+            onChange={changeNameFile}
+          />
         </div>
         {loading ? (
           <Button nome="Enviando..." disabled />
@@ -118,14 +132,13 @@ const AdicionarFoto = () => {
           <Button nome="Enviar" />
         )}
       </form>
-      <div>
-        {img.preview ? (
-          <div
-            className={styles.preview}
-            style={{ backgroundImage: `url('${img.preview}')` }}
-          ></div>
-        ) : null}
-      </div>
+
+      {img.preview ? (
+        <div
+          className={styles.preview}
+          style={{ backgroundImage: `url('${img.preview}')` }}
+        ></div>
+      ) : null}
 
       {error ? <Error error={error} /> : null}
     </div>
