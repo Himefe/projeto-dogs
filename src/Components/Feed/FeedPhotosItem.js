@@ -1,11 +1,17 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { fetchPhotoId } from "../../Redux/photo";
+import { toggleModal } from "../../Redux/ui";
 import Image from "../Helper/Image";
 
-const FeedPhotosItem = ({ photo, setModalPhoto }) => {
+const FeedPhotosItem = ({ photo }) => {
   const [attAcesso, setAttAcesso] = React.useState(photo.acessos);
 
+  const dispatch = useDispatch();
+
   function handleClick() {
-    setModalPhoto(photo);
+    dispatch(toggleModal());
+    dispatch(fetchPhotoId(photo.id));
     setAttAcesso(Number(attAcesso) + 1);
   }
 

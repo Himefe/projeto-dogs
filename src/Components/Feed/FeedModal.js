@@ -5,29 +5,23 @@ import { PHOTO_GET } from "../../api";
 import PhotoContent from "./Photo/PhotoContent";
 import Loading from "../Helper/Loading";
 import Error from "../Helper/Error";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPhotoId } from "../../Redux/photo";
+import { toggleModal } from "../../Redux/ui";
 
-const FeedModal = ({ photo, setModalPhoto }) => {
-  const { data, loading, error, request } = useFetch();
+const FeedModal = ({ photo }) => {
+  const { loading, error } = useSelector((state) => state.photoReducer);
 
-  React.useEffect(() => {
-    const pegarFoto = async () => {
-      const { url, options } = PHOTO_GET(photo.id);
-      await request(url, options);
-
-      return;
-    };
-    pegarFoto();
-  }, [photo, request]);
+  const dispatch = useDispatch();
 
   const fechaModal = (event) => {
-    if (event.currentTarget === event.target) setModalPhoto(null);
+    if (event.currentTarget === event.target) dispatch(toggleModal());
   };
 
   return (
     <div className={styles.modal} onClick={fechaModal}>
       {error ? <Error error={error} /> : null}
-      {loading ? <Loading /> : null}
-      {data ? <PhotoContent data={data} /> : null}
+      {loading ? <Loading /> : <PhotoContent />}
     </div>
   );
 };

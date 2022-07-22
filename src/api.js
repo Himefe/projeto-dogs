@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+
 export const API_URL = "https://dogsapi.origamid.dev/json";
 
 export const TOKEN_POST = (body) => {
@@ -66,7 +68,7 @@ export const USER_LOST_PASSWORD = (body) => {
   };
 };
 
-export const USER_PHOTO_POST = (body, token) => {
+export const USER_PHOTO_POST = ({ formData, token }) => {
   return {
     url: `${API_URL}/api/photo`,
     options: {
@@ -74,7 +76,7 @@ export const USER_PHOTO_POST = (body, token) => {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-      body,
+      body: formData,
     },
   };
 };
@@ -105,7 +107,9 @@ export const PHOTO_COMMENT_POST = (id, body) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+        Authorization: `Bearer ${JSON.parse(
+          window.localStorage.getItem("token")
+        )}`,
       },
       body: JSON.stringify(body),
     },
@@ -132,7 +136,9 @@ export const USER_STATS = () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+        Authorization: `Bearer ${JSON.parse(
+          window.localStorage.getItem("token")
+        )}`,
       },
     },
   };
@@ -144,7 +150,9 @@ export const PHOTO_DELETE = (id) => {
     options: {
       method: "DELETE",
       headers: {
-        Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+        Authorization: `Bearer ${JSON.parse(
+          window.localStorage.getItem("token")
+        )}`,
       },
     },
   };

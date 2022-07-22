@@ -9,6 +9,7 @@ import Input from "../Form/Input";
 import Error from "../Helper/Error";
 import Head from "../Helper/Head";
 import styles from "./LoginForms.module.css";
+import { userLogin } from "../../Redux/user";
 
 const CreateLoginForm = () => {
   const usuario = useForm("");
@@ -18,8 +19,6 @@ const CreateLoginForm = () => {
   const navigate = useNavigate();
 
   const { request, error, setError, loading } = useFetch();
-
-  const { userLogin } = React.useContext(UserContext);
 
   async function handleSubmit(event) {
     event.preventDefault();

@@ -9,9 +9,10 @@ import { ReactComponent as Adicionar } from "../../Assets/adicionar.svg";
 import { ReactComponent as Estatisticas } from "../../Assets/estatisticas.svg";
 import { ReactComponent as Logout } from "../../Assets/sair.svg";
 import useMedia from "../../Hooks/useMedia";
+import { userLoggout } from "../../Redux/user";
+import { useDispatch } from "react-redux";
 
 const UserHeader = () => {
-  const { userLogout } = React.useContext(UserContext);
   const [title, setTitle] = React.useState("Minha Conta");
 
   const { pathname } = useLocation();
@@ -30,6 +31,7 @@ const UserHeader = () => {
   const matched = useMedia("(max-width: 767px)");
 
   const [mobile, setMobile] = React.useState(false);
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -61,7 +63,7 @@ const UserHeader = () => {
             <Adicionar />
             {matched ? <p>Adicionar Fotos</p> : null}
           </NavLink>
-          <button onClick={userLogout} title="Deslogar">
+          <button onClick={() => dispatch(userLoggout())} title="Deslogar">
             <Logout />
             {matched ? <p>Sair</p> : null}
           </button>

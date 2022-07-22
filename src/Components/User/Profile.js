@@ -1,11 +1,11 @@
 import React from "react";
 import Feed from "../Feed/Feed";
-
-import { UserContext } from "../../UserContext";
+import { useSelector } from "react-redux";
 
 const Profile = () => {
-  const { userID } = React.useContext(UserContext);
-  return <div>{userID ? <Feed userID={userID} /> : null}</div>;
+  const user = useSelector((state) => state.user);
+
+  return <div>{user.data.id ? <Feed userID={user.data.id} /> : null}</div>;
 };
 
 export default Profile;

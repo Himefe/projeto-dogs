@@ -4,38 +4,17 @@ import useFetch from "../../Hooks/useFetch";
 import FeedPhotosItem from "./FeedPhotosItem";
 import styles from "./css/FeedPhotos.module.css";
 import Loading from "../Helper/Loading";
+import { useSelector } from "react-redux";
 
-const FeedPhotos = ({ setModalPhoto, userID, pages, setInfinite }) => {
-  const { data, loading, error, request } = useFetch();
+const FeedPhotos = ({ setModalPhoto }) => {
+  const { list, data, error, loading } = useSelector((state) => state.feed);
+  const { modal } = useSelector((state) => state.uiSlice);
 
-  const [noMore, setNoMore] = React.useState(false);
-
-  React.useEffect(() => {
-    const fetchPhotos = async () => {
-      let total = 6;
-      const { url, options } = PHOTOS_GET({
-        page: pages,
-        total,
-        user: await userID,
-      });
-
-      const { response, json } = await request(url, options);
-      if (json && response.ok && json.length < total) {
-        setInfinite(false);
-        setNoMore(true);
-      }
-    };
-
-    fetchPhotos();
-  }, [request, userID, pages, setInfinite]);
-
-  if (error) return <span className="error">{error}</span>;
-  if (loading) return <Loading />;
-  if (data) {
+  if (list.length) {
     return (
       <>
         <ul className={styles.ulArea}>
-          {data.map((photo) => (
+          {list.map((photo) => (
             <FeedPhotosItem
               photo={photo}
               key={photo.id}
@@ -43,7 +22,7 @@ const FeedPhotos = ({ setModalPhoto, userID, pages, setInfinite }) => {
             />
           ))}
         </ul>
-        {noMore ? (
+        {data.length <= 1 ? (
           <p
             style={{
               textAlign: "center",

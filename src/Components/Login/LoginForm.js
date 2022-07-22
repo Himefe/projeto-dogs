@@ -7,11 +7,15 @@ import stylesButton from "../Form/Button.module.css";
 import Error from "../Helper/Error";
 
 import { Link } from "react-router-dom";
-import { UserContext } from "../../UserContext";
+
 import Head from "../Helper/Head";
+import { useDispatch, useSelector } from "react-redux";
+import { userLogin } from "../../Redux/user";
 
 const LoginForm = () => {
-  const { userLogin, loading, error } = React.useContext(UserContext);
+  const { loading, error } = useSelector((state) => state.user); // Selector reducer: user;
+
+  const dispatch = useDispatch();
 
   const username = useForm("");
   const password = useForm("");
@@ -22,7 +26,9 @@ const LoginForm = () => {
     password.validate();
 
     if (username.validate() && password.validate()) {
-      userLogin(username.value, password.value);
+      dispatch(
+        userLogin({ username: username.value, password: password.value })
+      );
     }
   };
 
@@ -54,7 +60,7 @@ const LoginForm = () => {
           <Button nome="Entrar" />
         )}
 
-        {error ? <Error error="Dados incorretos!" /> : null}
+        {error ? <Error error={error.payload} /> : null}
       </form>
 
       <Link to="perdeu" className={styles.lostPassword}>

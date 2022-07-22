@@ -1,27 +1,30 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { PHOTO_GET } from "../../../api";
-import useFetch from "../../../Hooks/useFetch";
+import { fetchPhotoId } from "../../../Redux/photo";
+import Loading from "../../Helper/Loading";
+
 import PhotoContent from "./PhotoContent";
 
 const Photo = () => {
-  const { id } = useParams();
+  const dispatch = useDispatch();
+  const statePhoto = useSelector((state) => state.photoReducer);
 
-  const { data, loading, error, request } = useFetch();
+  const { id } = useParams();
 
   React.useEffect(() => {
     const aloha = async () => {
-      const { url, options } = PHOTO_GET(id);
-      await request(url, options);
-
-      return;
+      if (id) {
+        dispatch(fetchPhotoId(id));
+      }
     };
     aloha();
-  }, [request, id]);
+  }, [id, dispatch]);
 
+  if (statePhoto.loading) return <Loading />;
   return (
     <div className="mainContainer container">
-      {data ? <PhotoContent data={data} single={true} /> : null}
+      {statePhoto.data ? <PhotoContent single={true} /> : null}
     </div>
   );
 };

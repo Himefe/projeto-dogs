@@ -12,8 +12,14 @@ import { USER_PHOTO_POST } from "../../api";
 import { useNavigate } from "react-router-dom";
 import Head from "../Helper/Head";
 import Error from "../Helper/Error";
+import { useDispatch, useSelector } from "react-redux";
+import { photoPost } from "../../Redux/photoPost";
 
 const AdicionarFoto = () => {
+  const dispatch = useDispatch();
+  const { token } = useSelector((state) => state.token.data);
+  const { data, error, loading } = useSelector((state) => state.photoPostSlice);
+
   const nomeFoto = useForm("");
   const peso = useForm("");
   const idade = useForm("");
@@ -21,7 +27,6 @@ const AdicionarFoto = () => {
   const [img, setImg] = React.useState({});
 
   const mobile = useMedia("(max-width: 767px)");
-  const { request, error, data, loading } = useFetch();
 
   const [nomeArquivo, setNomeArquivo] = React.useState(
     "Selecione um arquivo..."
@@ -34,8 +39,6 @@ const AdicionarFoto = () => {
     }
   }, [nomeArquivo, img, mobile]);
 
-  React.useEffect(() => {}, [nomeArquivo, img]);
-
   const navigate = useNavigate();
 
   React.useEffect(() => {
@@ -44,7 +47,7 @@ const AdicionarFoto = () => {
     }
   }, [data, navigate]);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     nomeFoto.validate();
@@ -58,12 +61,8 @@ const AdicionarFoto = () => {
     formData.append("peso", peso.value);
     formData.append("idade", idade.value);
 
-    const token = window.localStorage.getItem("token");
-
-    const { url, options } = USER_PHOTO_POST(formData, token);
-
     if (nomeFoto.validate() && peso.validate() && idade.validate()) {
-      request(url, options);
+      const photoPostDispatch = await dispatch(photoPost({ formData, token }));
     }
 
     return;
